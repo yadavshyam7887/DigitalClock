@@ -1,0 +1,97 @@
+/* ===== Basic reset ===== */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { height: 100%; }
+
+/* ===== Full-page layout ===== */
+body{
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;       /* heading above clock */
+  justify-content: center;      /* vertical center */
+  align-items: center;          /* horizontal center */
+  gap: 20px;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  color: #222;
+
+  /* Background image from your URL */
+  background: url("https://cdn.lazyshop.com/files/84d84f33-5cbd-4cd2-8c63-4a3789e49cfc/other/c43a1cdf40b737076994e29f4e5178a9.jpg")
+              center center / cover no-repeat fixed;
+}
+
+/* Heading styling */
+h2 {
+  font-size: clamp(26px, 4vw, 36px);
+  font-weight: 700;
+  color: #ffffff; /* white so it stands out on your background image */
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  padding: 8px 20px;
+  border-radius: 8px;
+
+  /* subtle background for contrast over the image */
+  background: rgba(92, 196, 237, 0.4);
+  backdrop-filter: blur(0px);
+
+  /* slight glow effect */
+  text-shadow: 0 2px 4px rgba(0,0,0,0.6);
+}
+
+
+/* ===== Clock box ===== */
+.clock{
+  display: flex;
+  gap: 18px;
+  padding: 18px 22px;
+  border-radius: 14px;
+  
+  /* translucent background for contrast */
+  background: rgba(255, 255, 255, 0.85);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  
+  /* subtle shadow for depth */
+  box-shadow: 0 6px 18px rgba(0,0,0,0.25);
+}
+
+/* Stack on small screens */
+@media (max-width: 520px){
+  .clock{
+    flex-direction: column;
+    align-items: center;
+    width: min(92vw, 420px);
+  }
+}
+
+/* ===== Time blocks ===== */
+.clock > div{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 100px;
+}
+
+#hour, #minutes, #seconds, #ampm{
+  font-variant-numeric: tabular-nums;
+  line-height: 1;
+}
+
+#hour, #minutes, #seconds{
+  font-size: clamp(30px, 6vw, 44px);
+  font-weight: 700;
+  color: #222;
+}
+
+#ampm {
+  font-size: 3em;  /* half the size of the digits */
+  font-weight: 600;
+  color: #c0392b;
+  letter-spacing: 1px;
+  align-self: flex-start; /* keeps it aligned neatly to top if needed */
+}
+
+.text{
+  margin-top: 6px;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: #444;
+}
